@@ -16,5 +16,5 @@
 | Recall | 73.51%     |
 | F1    | 78.77%    |
 
-F1-Score (dev2.out file) = 78.77%
-F1-Score (test2.out file) = 66.36%
+- F1-Score (dev2.out file) = 78.77%
+- F1-Score (test2.out file) = 66.36%

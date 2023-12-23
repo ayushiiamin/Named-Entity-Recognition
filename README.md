@@ -1,19 +1,13 @@
 # Named-Entity-Recognition
 
 ## Task 1 Model Architecture
-![image](https://github.com/ayushiiamin/Named-Entity-Recognition/assets/77382840/1c91c467-b1c7-4a7c-8312-d6a9fed50e2a)
+![image](https://github.com/ayushiiamin/Named-Entity-Recognition/assets/77382840/e962d1a6-0081-4714-a090-692b06fcd082)
+
 
 
 ## Task 2 Model Architecture
-BiLSTM_Model_2(
-  (embedding): Embedding(23626, 101)
-  (lstm): LSTM(101, 256, batch_first=True, bidirectional=True)
-  (lin): Linear(in_features=512, out_features=128, bias=True)
-  (dropout): Dropout(p=0.33, inplace=False)
-  (elu): ELU(alpha=2.0)
-  (classifier): Linear(in_features=128, out_features=9, bias=True)
-  (softmax): Softmax(dim=2)
-)
+![image](https://github.com/ayushiiamin/Named-Entity-Recognition/assets/77382840/fc4fafd2-5e7b-425f-94c9-c49950694f55)
+
 
 ## Results
 

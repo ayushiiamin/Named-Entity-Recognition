@@ -1,5 +1,27 @@
 # Named-Entity-Recognition
 
+## Task 1 Model Architecture
+BiLSTM_Model(
+  (embedding): Embedding(23626, 100)
+  (lstm): LSTM(100, 256, batch_first=True, bidirectional=True)
+  (lin): Linear(in_features=512, out_features=128, bias=True)
+  (dropout): Dropout(p=0.33, inplace=False)
+  (elu): ELU(alpha=2.0)
+  (classifier): Linear(in_features=128, out_features=9, bias=True)
+  (softmax): Softmax(dim=2)
+)
+
+## Task 2 Model Architecture
+BiLSTM_Model_2(
+  (embedding): Embedding(23626, 101)
+  (lstm): LSTM(101, 256, batch_first=True, bidirectional=True)
+  (lin): Linear(in_features=512, out_features=128, bias=True)
+  (dropout): Dropout(p=0.33, inplace=False)
+  (elu): ELU(alpha=2.0)
+  (classifier): Linear(in_features=128, out_features=9, bias=True)
+  (softmax): Softmax(dim=2)
+)
+
 ## Results
 
 ### Task 1

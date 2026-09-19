@@ -37,4 +37,5 @@ The model recognizes four main entity types:
 - ```ORG``` — Organization
 - ```LOC``` — Location
 - ```MISC``` — Miscellaneous entity
+
 using the BIO tagging format.

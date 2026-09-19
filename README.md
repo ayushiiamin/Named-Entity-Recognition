@@ -20,3 +20,21 @@ For example:
 ```text
 Barack Obama visited Paris.
 ```
+
+can be labeled as:
+
+```text
+Barack   B-PER
+Obama    I-PER
+visited  O
+Paris    B-LOC
+```
+
+The goal of this project was to build a neural sequence-tagging system that predicts an entity label for every word in a sentence.
+
+The model recognizes four main entity types:
+- ```PER``` — Person
+- ```ORG``` — Organization
+- ```LOC``` — Location
+- ```MISC``` — Miscellaneous entity
+using the BIO tagging format.

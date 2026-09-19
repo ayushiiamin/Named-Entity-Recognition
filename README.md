@@ -1,29 +1,22 @@
-# Named-Entity-Recognition
+# Named Entity Recognition with BiLSTM and GloVe
 
-## Task 1 Model Architecture
-![image](https://github.com/ayushiiamin/Named-Entity-Recognition/assets/77382840/e962d1a6-0081-4714-a090-692b06fcd082)
+A deep learning Named Entity Recognition (NER) system built with **PyTorch** to identify people, organizations, locations, and miscellaneous entities in text.
 
+This project explores two sequence-labeling architectures:
 
+1. A **BiLSTM model with learned word embeddings**
+2. An enhanced **BiLSTM model using pretrained GloVe embeddings and capitalization features**
 
-## Task 2 Model Architecture
-![image](https://github.com/ayushiiamin/Named-Entity-Recognition/assets/77382840/fc4fafd2-5e7b-425f-94c9-c49950694f55)
+The improved model achieved a **78.77% F1-score on the development set**, compared with **72.06%** for the baseline architecture.
 
+---
 
-## Results
+## Project Overview
 
-### Task 1
-| Metric    | Score |
-| -------- | ------- |
-| Precision  | 74.87%    |
-| Recall | 69.45%     |
-| F1    | 72.06%    |
+Named Entity Recognition is the task of identifying and classifying meaningful entities in text.
 
-### Task 2
-| Metric    | Score |
-| -------- | ------- |
-| Precision  | 84.85%    |
-| Recall | 73.51%     |
-| F1    | 78.77%    |
+For example:
 
-- F1-Score (dev2.out file) = 78.77%
-- F1-Score (test2.out file) = 66.36%
+```text
+Barack Obama visited Paris.
+```

@@ -250,3 +250,39 @@ This allows the BiLSTM to efficiently process only the meaningful parts of each 
 ---
 
 ### 5. Bidirectional Sequence Modeling
+A Bidirectional LSTM processes the sentence in both directions.
+```text
+Left Context  ─────► Token ◄───── Right Context
+```
+This is especially useful for NER.
+
+For example:
+```text
+Apple released a new product.
+```
+and
+```text
+She bought an apple.
+```
+contain the same surface word but very different contextual meanings.
+
+By incorporating information from both preceding and following words, the BiLSTM can make more informed token-level predictions.
+
+---
+
+### 6. Class-Imbalance Handling
+NER datasets are often dominated by the O tag because most words are not named entities.
+
+To reduce bias toward frequent classes, the training pipeline calculates inverse class-frequency weights and supplies them to:
+```python
+nn.CrossEntropyLoss
+```
+This gives underrepresented entity classes more influence during optimization.
+
+Padding tokens are ignored during loss calculation.
+
+---
+
+### 6. Class-Imbalance Handling
+
+

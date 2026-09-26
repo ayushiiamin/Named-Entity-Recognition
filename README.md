@@ -283,6 +283,31 @@ Padding tokens are ignored during loss calculation.
 
 ---
 
-### 6. Class-Imbalance Handling
+### 7. Model Optimization
 
+#### Model 1
+The baseline model uses:
+```text
+Optimizer      : SGD
+Learning Rate  : 0.1
+Momentum       : 0.9
+Nesterov       : Enabled
+Epochs         : 50
+Batch Size     : 32
+```
+A multi-step learning-rate scheduler gradually reduces the learning rate during training.
 
+#### Model 2
+The GloVe-based model uses:
+```text
+Optimizer      : SGD
+Learning Rate  : 0.07
+Momentum       : 0.9
+Nesterov       : Enabled
+Epochs         : 150
+Batch Size     : 16
+```
+
+---
+
+### 8. Inference

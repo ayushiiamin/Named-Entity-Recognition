@@ -311,3 +311,203 @@ Batch Size     : 16
 ---
 
 ### 8. Inference
+
+After training, both models are saved as PyTorch state dictionaries:
+```text
+blstm1.pt
+blstm2.pt
+```
+During inference:
+```text
+Sentence
+   │
+   ▼
+Token IDs
+   │
+   ▼
+BiLSTM Model
+   │
+   ▼
+Class Probabilities
+   │
+   ▼
+Argmax
+   │
+   ▼
+Predicted BIO Tags
+```
+Predictions are written to output files while preserving sentence boundaries and token order.
+
+---
+
+## Results
+
+### Development Set
+| Model | Precision | Recall | F1 |
+| -------- | -------- | -------- | -------- |
+| BiLSTM with learned embeddings    | 74.87%  | 69.45%   | 72.06%   |
+| BiLSTM + GloVe + capitalization   | 84.85%   | 73.51%   | 78.77%   |
+
+The GloVe-based architecture improved development-set F1 by:
+```text
+78.77 - 72.06 = 6.71 percentage points
+```
+The second model also achieved substantially higher precision, suggesting that pretrained semantic information and capitalization cues helped reduce incorrect entity predictions.
+
+---
+
+### Test Performance
+The enhanced model achieved:
+```text
+Test F1: 66.36%
+```
+The difference between development and test performance highlights the importance of evaluating sequence models on unseen data and monitoring generalization beyond the development set.
+
+---
+
+### Why Model 2 Performed Better
+
+The strongest architecture combines three useful signals:
+1. Pretrained Semantic Knowledge: GloVe embeddings provide semantic relationships learned from a much larger corpus than the NER training dataset.
+2. Bidirectional Context: The BiLSTM captures information from both sides of each token.
+3. Capitalization Information: Capitalization provides a useful linguistic signal for proper nouns and named entities.
+
+Together:
+```text
+Pretrained Semantics
+        +
+Bidirectional Context
+        +
+Capitalization
+        │
+        ▼
+Improved NER Performance
+```
+
+---
+
+## Tech Stack
+### Programming
+- Python
+### Deep Learning
+- PyTorch
+- Bidirectional LSTM
+- Neural sequence labeling
+### NLP
+- Named Entity Recognition
+- BIO tagging
+- GloVe embeddings
+### Data Processing
+- NumPy
+- pandas
+- NLTK
+### Machine Learning
+- scikit-learn
+- weighted cross-entropy
+- sequence classification metrics
+
+---
+
+## Repository Structure
+```text
+Named-Entity-Recognition/
+│
+├── HW4-CSCI544-Final.py
+│   └── Data preprocessing, model definitions, training, inference,
+│       and output generation
+│
+├── blstm1.pt
+│   └── Trained baseline BiLSTM model
+│
+├── blstm2.pt
+│   └── Trained GloVe-based BiLSTM model
+│
+├── dev1.out
+│   └── Baseline predictions on development data
+│
+├── dev2.out
+│   └── GloVe model predictions on development data
+│
+├── test1.out
+│   └── Baseline predictions on test data
+│
+├── test2.out
+│   └── GloVe model predictions on test data
+│
+└── README.md
+```
+
+---
+
+## Running the Project
+### 1. Clone the Repository
+```python
+git clone https://github.com/ayushiiamin/Named-Entity-Recognition.git
+cd Named-Entity-Recognition
+```
+### 2. Install Dependencies
+```bash
+pip install torch torchvision
+pip install numpy pandas
+pip install scikit-learn nltk beautifulsoup4 tqdm
+```
+### 3. Download GloVe Embeddings
+The second model expects:
+```python
+glove.6B.100d
+```
+Place the GloVe embedding file in the project directory or update the path in the Python script.
+### 4. Add Dataset Files
+The script expects:
+```python
+data/train
+data/dev
+data/test
+```
+with sentence-level token/tag formatting.
+### 5. Run Inference
+```python
+python HW4-CSCI544-Final.py
+```
+The script loads the trained models and produces:
+```text
+dev1.out
+dev2.out
+test1.out
+test2.out
+```
+
+---
+
+## Potential Improvements
+A modernized version of this project could explore:
+- BiLSTM + CRF sequence decoding
+- BERT or RoBERTa token classification
+- contextual embeddings instead of static GloVe vectors
+- character-level embeddings for morphological features
+- transformer-based NER models
+- subword token alignment
+- stronger regularization
+- hyperparameter optimization
+- entity-level error analysis
+- model-serving through a REST API
+
+A modern architecture could look like:
+```text
+Raw Text
+   │
+   ▼
+Subword Tokenization
+   │
+   ▼
+Transformer Encoder
+   │
+   ▼
+Token-Level Classifier
+   │
+   ▼
+Optional CRF Layer
+   │
+   ▼
+Named Entity Tags
+```
